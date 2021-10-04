@@ -1,43 +1,44 @@
 import java.util.Scanner;
 
-public class VendedorSopapipillas
+public class VendedorSopapipillas {
 
-{
+
+
     Scanner teclado =new Scanner(System.in);
 
-    private int inventarioIncial;
+    private int stock;
     private int precio;
-    private int dineroInicial;
+    private int DineroCaja;
 
     public VendedorSopapipillas() {
-        this.inventarioIncial = 50;
+        this.stock = 50;
         this.precio = 200;
-        this.dineroInicial=5000;
+        this.DineroCaja=4500;
 
 
     }
 
 
     public VendedorSopapipillas(int inventarioIncial, int precio, int dineroInicial) {
-        this.inventarioIncial = inventarioIncial;
+        this.stock = inventarioIncial;
         this.precio = precio;
-        this.dineroInicial = dineroInicial;
+        this.DineroCaja = dineroInicial;
     }
 
-    public int getDineroInicial() {
-        return dineroInicial;
+    public int getDineroCaja() {
+        return DineroCaja;
     }
 
-    public void setDineroInicial(int dineroInicial) {
-        this.dineroInicial = dineroInicial;
+    public void setDineroCaja(int dineroInicial) {
+        this.DineroCaja = dineroInicial;
     }
 
-    public int getInventarioIncial() {
-        return inventarioIncial;
+    public int getstock() {
+        return stock;
     }
 
-    public void setInventarioIncial(int inventarioIncial) {
-        this.inventarioIncial = inventarioIncial;
+    public void setstock(int inventarioIncial) {
+        this.stock = inventarioIncial;
     }
 
     public int getPrecio() {
@@ -49,38 +50,85 @@ public class VendedorSopapipillas
     }
 
 
-    public int vuelto(int pago,int aPagar){
 
-        int b=pago-aPagar;
-        System.out.println("El vuelto del cliente es:"+b);
-        return b;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public int vuelto(int cantPago,int debePagar){
+
+        return cantPago-debePagar;
     }
 
 
-    public int cantSopa(){
-        System.out.println("Cuantas sopaipillas de_*"+precio+"*_pesos desea comprar:");
+    public int cantPagar(int cant) {
+        int debePagar = cant * precio;
 
-        int cant = teclado.nextInt();
+        return debePagar;
+
+    }
+
+    public int cantComprar(){
+
+       int cant = 0;
+        do {
+            try {
+                cant = teclado.nextInt();
+
+            }catch (Exception e){
+                System.out.println("Cantidad ingresada invalida");
+                teclado.next();
+            }
+
+        }while(cant> stock || cant<0 );
         return cant;
+
     }
-public int pagarCliente(int cant) {
-    int pagarCliente = cant * precio;
-    System.out.println("monto que debe pagar:\n" + pagarCliente);
-    return pagarCliente;
-
-}
-
-
-
-
 
 
 
     @Override
     public String toString() {
         return "VendedorSopapipillas{" +
-                "inventarioIncial=" + inventarioIncial +
+                ", inventarioIncial=" + stock +
                 ", precio=" + precio +
+                ", dineroInicial=" + DineroCaja +
                 '}';
     }
 }
